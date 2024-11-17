@@ -15,4 +15,7 @@ export default {
     },
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: ["light"],  // Force light theme or specify a theme like 'cupcake', 'light', etc.
+  }
 } satisfies Config;
