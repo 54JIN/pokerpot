@@ -2,6 +2,7 @@
 
 //Components
 import AddUserPopUp from "./Components/AddUserPopUp";
+import EditPlayerPopUp from "./Components/EditPlayerPopUp";
 import PlayerDisplayCard from "./Components/PlayerDisplayCard";
 import TotalPotDisplayCard from "./Components/TotalPotDisplayCard";
 import { useEffect, useState } from "react";
@@ -13,6 +14,8 @@ interface Player {
 
 export default function Home() {
   const [addUserPopUpOpen, setAddUserPopUpOpen] = useState(false);
+  const [editUserPopUpOpen, setEditUserPopUpOpen] = useState(false);
+  const [playerToEdit, setPlayerToEdit] = useState({player: "", buyIn: 0});
   const [totalPot, setTotalPot] = useState<number>(0);
   const [players, setPlayers] = useState<{ player: string; buyIn: number }[]>(
     []
@@ -39,6 +42,11 @@ export default function Home() {
   const handleClickPopUpAddUser = () => {
     setAddUserPopUpOpen(!addUserPopUpOpen);
   };
+  
+  const handleClickEditUserPopUpOpen = (data: {player: string, buyIn: number}) => {
+    setPlayerToEdit(data)
+    setEditUserPopUpOpen(!editUserPopUpOpen);
+  };
 
   const handleClickRemoveHistory = () => {
     localStorage.removeItem("players");
@@ -50,6 +58,12 @@ export default function Home() {
     setPlayers((prevData) => [...prevData, data]);
     setTotalPot((prevTotal) => prevTotal + data.buyIn);
     setAddUserPopUpOpen(!addUserPopUpOpen);
+  };
+  
+  const handleClickManagePot = (data: { player: string; buyIn: number }) => {
+    setPlayers((prevData) => prevData.map((p) => p.player === data.player? {...data, buyIn: (p.buyIn + data.buyIn)} : p));
+    setTotalPot((prevTotal) => prevTotal + data.buyIn);
+    setEditUserPopUpOpen(!editUserPopUpOpen);
   };
 
   return (
@@ -105,6 +119,7 @@ export default function Home() {
               <PlayerDisplayCard
                 name={data.player}
                 value={data.buyIn}
+                handleClickEditUserPopUpOpen={handleClickEditUserPopUpOpen}
                 key={idx}
               />
             );
@@ -116,6 +131,15 @@ export default function Home() {
           <AddUserPopUp
             handleClickPopUpClose={handleClickPopUpAddUser}
             handleClickAddPlayer={handleClickAddPlayer}
+          />
+        </div>
+      )}
+      {editUserPopUpOpen && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 flex h-screen w-screen justify-center items-center bg-gray-200 bg-opacity-90">
+          <EditPlayerPopUp
+            handleClickPopUp={handleClickEditUserPopUpOpen}
+            handleClickManagePot={handleClickManagePot}
+            data={playerToEdit}
           />
         </div>
       )}

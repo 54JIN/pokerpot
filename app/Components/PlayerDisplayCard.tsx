@@ -1,11 +1,13 @@
 interface PlayerDisplayCardProps {
   name: string;
   value: number;
+  handleClickEditUserPopUpOpen: (data: { player: string; buyIn: number }) => void;
 }
 
 export default function PlayerDisplayCard({
   name,
   value,
+  handleClickEditUserPopUpOpen
 }: PlayerDisplayCardProps) {
   return (
     <div className="flex flex-col bg-[#ffffff] p-5 gap-4 border-[2px] border-[rgba(238,238,238,0.8)] rounded-lg gap-2">
@@ -14,7 +16,7 @@ export default function PlayerDisplayCard({
           <p>{name}</p>
           <p className="text-[rgb(140,140,140)]">total buy in</p>
         </div>
-        <button className="btn btn-ghost p-3 rounded-full">
+        <button className="btn btn-ghost p-3 rounded-full" onClick={() => handleClickEditUserPopUpOpen({player: name, buyIn: value})}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
