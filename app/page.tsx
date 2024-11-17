@@ -131,6 +131,7 @@ export default function Home() {
           <AddUserPopUp
             handleClickPopUpClose={handleClickPopUpAddUser}
             handleClickAddPlayer={handleClickAddPlayer}
+            currentPlayers={players}
           />
         </div>
       )}

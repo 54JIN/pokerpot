@@ -93,10 +93,10 @@ export default function EditPlayerPopUp({
           </label>
         </div>
       </div>
-      <button className="btn" onClick={handleClickAddToPlayerBuyIn}>
+      <button className="btn bg-[#226f54] text-[#ffffff]" onClick={handleClickAddToPlayerBuyIn}>
         Add to Pot
       </button>
-      <button className="btn" onClick={handleClickSubtractFromPlayerBuyIn}>
+      <button className="btn bg-[#da2c38] text-[#ffffff]" onClick={handleClickSubtractFromPlayerBuyIn}>
         Subtract from Pot
       </button>
     </div>
