@@ -134,7 +134,7 @@ export default function AddUserPopUp({
         <div role="alert" className="alert alert-error max-w-[232px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 shrink-0 stroke-current"
+            className="hidden lg:flex h-6 w-6 shrink-0 stroke-current"
             fill="none"
             viewBox="0 0 24 24"
           >
