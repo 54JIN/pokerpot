@@ -10,11 +10,11 @@ export default function PlayerDisplayCard({
   handleClickEditUserPopUpOpen
 }: PlayerDisplayCardProps) {
   return (
-    <div className="flex flex-col bg-[#ffffff] p-5 gap-4 border-[2px] border-[rgba(238,238,238,0.8)] rounded-lg gap-2">
+    <div className="flex flex-col bg-[#da2c38] p-5 gap-4 border-[2px] border-[rgba(238,238,238,0.8)] rounded-lg gap-2">
       <div className="flex justify-between items-center">
         <div className="flex flex-col">
-          <p>{name}</p>
-          <p className="text-[rgb(140,140,140)]">total buy in</p>
+          <p className="text-[#ffffff] font-bold">{name}</p>
+          <p className="text-[#dee2e6]">total buy in</p>
         </div>
         <button className="btn btn-ghost p-3 rounded-full" onClick={() => handleClickEditUserPopUpOpen({player: name, buyIn: value})}>
           <svg
@@ -23,7 +23,7 @@ export default function PlayerDisplayCard({
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="currentColor"
+            stroke="#ffffff"
           >
             <path
               strokeLinecap="round"
@@ -33,7 +33,7 @@ export default function PlayerDisplayCard({
           </svg>
         </button>
       </div>
-      <h3 className="text-2xl font-bold">${value}</h3>
+      <h3 className="text-2xl text-[#ffffff] font-bold">${value}</h3>
     </div>
   );
 }
